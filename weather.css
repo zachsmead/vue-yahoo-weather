@@ -1,5 +1,4 @@
-.image {
-	width: 90px;
-	height: 90px;
-	background-size: cover;
+img {
+	width: 100%;
+	max-width: 400px;
 }

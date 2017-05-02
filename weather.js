@@ -3,8 +3,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
 		el: "#app",
 		data: {
 			weather: {},
+			weatherItem:  {},
 			today: {},
-			forecast: {},
+			forecast: [],
 			images: { 
 				Today: "",
 				Sunny: "https://farm4.staticflickr.com/3270/2564986045_f1eda95a7d_z.jpg",
@@ -37,15 +38,27 @@ document.addEventListener("DOMContentLoaded", function(event) {
 					this.weatherLoaded = true;
 
 					// setting forecast
-					this.forecast = this.weather.query.results.channel.item.forecast;
+					this.weatherItem = this.weather.query.results.channel.item;
 
-					this.today = this.forecast.shift();
+					this.forecast = this.weatherItem.forecast;
 
+					this.today = this.weatherItem.condition;
+
+					// selecting the weather image
 					weatherAdjective = this.today.text;
 					this.images.today = this.images[weatherAdjective];
+
 				}.bind(this));
+			},
 
-
+			getDayBackground: function(day) {
+				if (day.text.includes("Sunny")) {
+					return "sunny-day";
+				} else if (day.text.includes("Cloudy")) {
+					return "cloudy-day";
+				} else if (day.text.includes("Rainy")) {
+					return "rainy-day";
+				};
 			}
 		}
 
