@@ -11,7 +11,22 @@
 		<input type="text" v-model="input_location"></input><br />
 		<div id=""></div>
 		<button v-on:click="getWeather()">Find weather</button>
-		{{ weather }}
+		
+		<div v-if="weatherLoaded">
+			<!-- {{ weather["query"]["results"]["channel"]["item"]["forecast"] }} -->
+
+			<!-- ^^ This will break the page if it tries to call a method on weather and weather is undefined. Weather will be undefined when this object hasnt loaded yet when you try to call the method on it. so there are 2 solutions: we have to either 1. put it inside an "if" statement that only calls {{weather["query"]["results"]}} after 'weather' has been defined inside weather.js, or 2. make sure that we define 'weather' immediately when the page loads. -->
+
+			{{ today }}<br/><br/>
+
+			<img :src='images["today"]'>
+
+			<div v-for="item in forecast"> {{ item }} </div>
+
+		</div>
+
+		
+
 
 	</div>
 
