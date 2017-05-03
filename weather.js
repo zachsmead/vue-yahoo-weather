@@ -56,9 +56,11 @@ document.addEventListener("DOMContentLoaded", function(event) {
 					return "sunny-day";
 				} else if (day.text.includes("Cloudy")) {
 					return "cloudy-day";
-				} else if (day.text.includes("Rainy")) {
+				} else if (day.text.includes("Rain") || day.text.includes("Thunderstorms") || day.text.includes("Showers"))  {
 					return "rainy-day";
-				};
+				} else if (day.text.includes("Wind") || day.text.includes("Breezy")) {
+					return "windy-day";
+				}
 			}
 		}
 
