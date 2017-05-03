@@ -10,7 +10,8 @@
 
 	<div id="app">
 		<div id="header-box">
-			<input type="text" v-model="input_location"></input><br />
+			<h1>Yahoo Weather</h1>
+			<input type="text" v-model="input_location" placeholder="Enter a location"></input>
 			<button v-on:click="getWeather()">Find weather</button>
 		</div>
 		
@@ -21,10 +22,12 @@
 			other words, when this object hasnt loaded yet and you still try to call the method on it. so there are 2 solutions: we have to either 1. put it inside an "if" statement that only calls {{weather["query"]["results"]...}} after 'weather' has been defined inside weather.js, or 2. make sure that we define 'weather' immediately when the page loads, with some set location. -->
 
 			<div id="conditions">
-				{{ weatherItem.title }}:<br/><br/>
-				{{ today.date }}<br/>
-				{{ today.temp }} &deg;<br />
-				{{ today.text }} <br />
+				<h2>{{ weatherItem.title }}:</h2>
+				<h3>
+					({{ today.date }})<br/>
+					{{ today.temp }} &deg;<br />
+					{{ today.text }} <br />
+				</h3>
 			</div>
 
 			<br/><br/>
